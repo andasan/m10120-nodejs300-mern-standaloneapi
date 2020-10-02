@@ -108,8 +108,10 @@ router.post('/tokenIsValid', async(req,res) => {
 })
 
 router.get('/', async (req,res)=> {
+    const user = await User.findById(req.user);
     res.json({
-        msg: "Hello Node"
+        displayName: user.displayName,
+        id: user._id
     });
 });
 
